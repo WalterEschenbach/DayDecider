@@ -9,12 +9,13 @@ const onChange = (value) =>{
 }
 
 const event = {
-    name: "test"
+    name: "test",
+    group: ["hello", "world"]
 }
 
 const onClick = () => {
-    axios.post('http://localhost:3030/event/create', event)
-        .then(res => console.log(res.data))
+    axios.post('http://127.0.0.1:3030/event/create', event)
+        .then(res => console.log(res))
         .catch(err => console.log(err))
 }
 
