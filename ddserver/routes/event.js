@@ -1,8 +1,8 @@
 const router = require('express').Router();
 let Event = require('../models/event.model')
 
-router.route('/create').post((req,res)=>{
-    console.log(req.body.name)
+router.route('/create').post((req, res)=>{
+    console.log('req.user', req.user)
     const name = req.body.name;
     const group = req.body.group;
 

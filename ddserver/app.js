@@ -3,26 +3,50 @@ const cors = require('cors')
 const app = express()
 const PORT = process.env.PORT || 3030;
 const mongoose = require('mongoose');
+const passport = require('passport')
+const passportSetup = require('./config/passport-setup')
+const keys = require('./config/keys')
+const cookieSession = require('cookie-session')
+const connectionURL = keys.mongodb
+const authCheck = require('./utils/auth-check')
+
+const corsOptions = {
+  origin: ["http://127.0.0.1:3000","http://127.0.0.1:3030"],
+  credentials: true,
+}
 
 app.use(express.json())
 
-app.use(cors())
+app.use(cors(corsOptions))
 
-mongoose.connect('mongodb+srv://weschenbach:losangeles29@tutorialgel.7rqbr.mongodb.net/DayDecider?retryWrites=true&w=majority', {
+mongoose.connect(connectionURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(()=> console.log('connected to DB'))
 .catch(error => console.log(error))
 
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
+}))
+
+// initialize passport
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World')
+  console.log('req.user', req.user)
+    res.send( {user: req.user})
 })
 
 const eventRouter = require('./routes/event')
+const authRouter = require('./routes/auth')
 
-app.use('/event', eventRouter);
+app.use('/auth', authRouter);
+app.use('/event',authCheck, eventRouter);
+
 
 app.listen(PORT)

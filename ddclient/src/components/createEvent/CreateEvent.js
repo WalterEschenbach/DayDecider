@@ -51,8 +51,10 @@ export default function CreateEvent() {
                 name,
                 group: emails
             }
-    
-            axios.post(route, event)
+            
+            const transport = axios.create({withCredentials: true})
+
+            transport.post(route,event)
             .then(res => console.log('Response:', res))
             .catch(err => console.log(err))
             
