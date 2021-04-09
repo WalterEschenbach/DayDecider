@@ -4,7 +4,6 @@ const keys = require('./keys')
 let User = require('../models/user.model')
 
 passport.serializeUser((user, done)=>{
-    console.log('cereal user', user)
     done(null, user.id);
 });
 
@@ -29,13 +28,15 @@ passport.use(
         User.findOne({googleId: profile.id}).then((currentUser)=>{
             if(currentUser){
                 // already have the user
-                console.log('user is:', currentUser)
+                console.log('Welcome Back!:', currentUser)
+
                 done(null, currentUser)
+
             }else{
                 // create user in our database
                 const name = profile.displayName;
                 const googleId = profile.id;
-                const email = profile.email;
+                const email = profile.emails[0].value
                 const events = [];
             
                 const newUser = new User({name, googleId, email, events})
