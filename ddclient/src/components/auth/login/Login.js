@@ -5,7 +5,7 @@ import Settings from '../../../config/settings'
 import './login.css'
 
 export default function Login() {
-    const gLink = `${Settings.domain.client}/auth/google`
+    const gLink = `${Settings.domain.server}/auth/google`
 
     return (
         <div className="sContainer">
