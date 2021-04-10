@@ -1,9 +1,11 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
+import Settings from '../../../config/settings'
+
 import './login.css'
 
 export default function Login() {
-    const gLink = "http://127.0.0.1:3030/auth/google"
+    const gLink = `${Settings.domain.client}/auth/google`
 
     return (
         <div className="sContainer">

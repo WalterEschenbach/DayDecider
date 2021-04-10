@@ -2,13 +2,14 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import validator from 'validator'
 import {Container, Row, Col, Form, Button, InputGroup} from 'react-bootstrap'
+import Settings from '../../config/settings'
 import '../createEvent/createevent.css'
 
 export default function CreateEvent() {
     const [name, setName] = useState("");
     const [emails, setEmails] = useState([]);
     const [email, setEmail] = useState(emails);
-    const [route] = useState('http://127.0.0.1:3030/event/create');
+    const [route] = useState(`${Settings.domain.server}/event/create`);
     const [disable, setDisable] = useState(false)
     const [invalidEmail, setInvalidEmail] = useState(false)
     const [invalidName, setInvalidName] = useState(false)

@@ -1,12 +1,13 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
+import Settings from '../../config/settings'
 import './eventcontainer.css'
 
-// const url = "http://127.0.0.1:3030/event/find";
+// const url = `${Settings.domain.server}/event/find`;
 
 export default function EventContainer() {
 
-    const eLink = "http://127.0.0.1:3000/event/create"
+    const eLink = `${Settings.domain.client}/event/create`
 
 
     return (

@@ -11,7 +11,7 @@ const connectionURL = keys.mongodb
 const authCheck = require('./utils/auth-check')
 
 const corsOptions = {
-  origin: ["http://127.0.0.1:3000","http://127.0.0.1:3030"],
+  origin: [keys.domain.client , keys.domain.server],
   credentials: true,
 }
 

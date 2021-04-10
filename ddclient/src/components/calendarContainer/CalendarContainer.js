@@ -2,6 +2,7 @@ import React from 'react'
 import {useHistory} from 'react-router-dom'
 import Calendar from 'react-calendar'
 import axios from 'axios'
+import Settings from '../../config/settings'
 import './calendarcontainer.css'
 import 'react-calendar/dist/Calendar.css'
 
@@ -14,8 +15,9 @@ export default function CalendarContainer() {
 
     const onClick = () => {
         const transport = axios.create({withCredentials: true})
-
-        transport.get('http://127.0.0.1:3030/auth/logout')
+        const tLink = `${Settings.domain.server}/auth/logout`
+        
+        transport.get(tLink)
             .then(res => {
                 console.log(res)
                 history.push('/login')
