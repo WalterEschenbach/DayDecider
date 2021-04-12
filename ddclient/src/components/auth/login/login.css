@@ -1,7 +1,26 @@
-.lContainer {
+.sContainer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 	width: 100%;
+}
+.gButton {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: fit-content;
+	padding: 0;
+}
+.gButton img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.gButton h6 {
+	font-family: "Roboto", sans-serif;
+	text-align: center;
+	margin: 0;
+	padding-right: 5px;
 }

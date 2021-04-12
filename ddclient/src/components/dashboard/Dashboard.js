@@ -9,6 +9,7 @@ import './dashboard.css'
 export default function Dashboard() {
     const [events, setEvents] = useState([]);
     const [eventFocus] = useState(events[0]);
+    const [user, setUser] = useState();
 
     useEffect(()=>{
         const tURL = `${Settings.domain.server}/event/find`
@@ -17,7 +18,7 @@ export default function Dashboard() {
         transport.get(tURL)
         .then((res)=> {
             setEvents(res.data)
-            console.log(res.data)
+            console.log(res)
         })
     },[])
 
