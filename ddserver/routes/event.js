@@ -4,7 +4,7 @@ let Event = require('../models/event.model')
 router.route('/create').post((req, res)=>{
     console.log('req.user', req.user)
     const name = req.body.name;
-    const group = req.body.group;
+    let group = [...req.body.group, req.user.email];
 
     const newEvent = new Event({name, group})
 
@@ -17,8 +17,16 @@ router.route('/create').post((req, res)=>{
     res.status(200).end()
 });
 
-router.route('/create').get((req,res)=>{
-    res.send('create an event')
+router.route('/find').get((req,res)=>{
+    Event.find({group: {$all: [req.user.email]}}, (err, event)=>{
+        if(err){
+            console.log('Error retrieving event');
+        } else{
+            res.json(event);
+        }
+    });
 })
+
+
 
 module.exports = router;

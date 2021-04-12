@@ -1,5 +1,4 @@
-import CalendarContainer from './components/calendarContainer/CalendarContainer'
-import DetailContainer from './components/detailContainer/DetailContainer'
+import Dashboard from './components/dashboard/Dashboard'
 import CreateEvent from './components/createEvent/CreateEvent'
 import SignUp from './components/auth/signUp/SignUp'
 import Logout from './components/auth/logout/Logout'
@@ -11,10 +10,7 @@ function App() {
   return (
     <div className="App">
         <Router>
-          <Route exact path="/">
-            <DetailContainer/>      
-            <CalendarContainer/>
-          </Route>
+          <Route exact path="/"><Dashboard/></Route>
           <Route path="/signup"><SignUp/></Route>
           <Route path="/logout"><Logout/></Route>
           <Route path="/login"><Login/></Route>

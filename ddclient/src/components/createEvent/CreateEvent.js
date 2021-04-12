@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import validator from 'validator'
-import {Container, Row, Col, Form, Button, InputGroup} from 'react-bootstrap'
+import {Container, Row, Col, Form, Button, InputGroup, Modal} from 'react-bootstrap'
 import Settings from '../../config/settings'
 import '../createEvent/createevent.css'
 
-export default function CreateEvent() {
+export default function CreateEvent(props) {
     const [name, setName] = useState("");
     const [emails, setEmails] = useState([]);
     const [email, setEmail] = useState(emails);
@@ -71,14 +71,23 @@ export default function CreateEvent() {
     }
     
     return (
+
+        <Modal
+        {...props}
+        size="fit-content"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Create Event
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+      
         <Container className="justify-content-md-center" >
-            <Row style={{height: "20vh"}} className="justify-content-md-center"></Row>
             <Row>
-                <Col/>
-                <Col style={{border: '1px solid grey'}}>
-                    <h1 style={{textAlign: 'center'}}>Create Event</h1>
-                    
-                    <br/>
+                <Col >
                     <Form onSubmit={handleSubmit} className="create-event">
                         <Form.Label>Event Name:</Form.Label>
                         <Form.Control 
@@ -117,9 +126,19 @@ export default function CreateEvent() {
                     </Form>
                     <br/>
                 </Col>
-                <Col/>
             </Row>
             
         </Container>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+
+
+
+
+
+       
     )
 }

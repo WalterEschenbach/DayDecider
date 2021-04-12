@@ -44,9 +44,11 @@ app.get('/', (req, res) => {
 
 const eventRouter = require('./routes/event')
 const authRouter = require('./routes/auth')
+const userRouter = require('./routes/user')
 
 app.use('/auth', authRouter);
 app.use('/event',authCheck, eventRouter);
+app.use('/user',authCheck, userRouter);
 
 
 app.listen(PORT)

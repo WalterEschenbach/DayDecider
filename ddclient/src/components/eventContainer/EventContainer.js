@@ -1,22 +1,29 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Button} from 'react-bootstrap'
 import Settings from '../../config/settings'
+import CreateEvent from '../createEvent/CreateEvent'
+import {FaRegCalendarPlus} from 'react-icons/fa'
 import './eventcontainer.css'
 
 // const url = `${Settings.domain.server}/event/find`;
 
 export default function EventContainer() {
+    const [modalShow, setModalShow] = useState(false)
 
     const eLink = `${Settings.domain.client}/event/create`
 
 
     return (
-        <div className="eContainer">
-            <header className="title">
+        <React.Fragment>
+            <div className="eContainer">
                 <h2>EVENTS</h2>
-                <Button href={eLink}>+</Button>
-            </header>
-      
-        </div>
+                <Button className="create-event-btn" variant="secondary" onClick={()=>setModalShow(true)}><FaRegCalendarPlus/></Button>
+            </div>
+            <CreateEvent
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            />
+        </React.Fragment>
+     
     )
 }

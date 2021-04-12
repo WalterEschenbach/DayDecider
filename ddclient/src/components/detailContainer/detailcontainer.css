@@ -2,3 +2,7 @@
 	height: 100vh;
 	width: 25vw;
 }
+.aToggle {
+	padding-left: 0;
+	padding-right: 0;
+}
