@@ -12,12 +12,12 @@ router.get('/logout', (req, res)=>{
 
 // auth with google
 router.get('/google', passport.authenticate('google',{
-    scope: ['profile', 'email']
+    scope: ['profile', 'email', 'openid']
 }));
 
 // callback route for google to redirect to
 router.get('/google/redirect', passport.authenticate('google'), (req, res)=>{
-    res.redirect(`${keys.domain.client}/?${req.user.email}`)
+    res.redirect(`${keys.domain.client}/?email=${req.user.email}&picture=${req.user.picture}`)
 })
 
 module.exports = router;

@@ -5,7 +5,8 @@ const userSchema = new Schema({
     name: {type: String},
     googleId: {type: String},
     email: {type: String},
-    events: {type: Array}
+    events: {type: Array}, 
+    picture: {type: String}
 }, {
     timestamps: true
 })

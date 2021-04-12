@@ -29,6 +29,7 @@ passport.use(
             if(currentUser){
                 // already have the user
                 console.log('Welcome Back!:', currentUser)
+                //console.log('PROFILE:', profile)
 
                 done(null, currentUser)
 
@@ -38,8 +39,9 @@ passport.use(
                 const googleId = profile.id;
                 const email = profile.emails[0].value
                 const events = [];
+                const picture = profile.photos[0].value
             
-                const newUser = new User({name, googleId, email, events})
+                const newUser = new User({name, googleId, email, events, picture})
         
                 newUser.save()
                 .then((newUser)=> {
