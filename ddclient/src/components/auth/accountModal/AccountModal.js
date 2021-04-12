@@ -1,7 +1,27 @@
-import React from 'react'
-import {Modal, Button} from 'react-bootstrap'
+import React from 'react';
+import {useHistory} from 'react-router-dom';
+import {Modal, Button} from 'react-bootstrap';
+import axios from 'axios';
+import Settings from '../../../config/settings';
+
+import './accountmodal.css';
 
 export default function AccountModal(props) {
+  let history = useHistory()
+
+  const onClick = () => {
+      const transport = axios.create({withCredentials: true});
+      const tLink = `${Settings.domain.server}/auth/logout`;
+      
+      transport.get(tLink)
+          .then(res => {
+              console.log(res);
+              history.push(`/login`);
+          })
+          .catch(err => console.log(err));
+  };
+
+
     return (
         <Modal
         {...props}
@@ -10,8 +30,9 @@ export default function AccountModal(props) {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
+          <Modal.Title className="aModalTitle" id="contained-modal-title-vcenter">
             Account Settings
+            <button onClick={onClick}><h4><u>Logout</u></h4></button>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

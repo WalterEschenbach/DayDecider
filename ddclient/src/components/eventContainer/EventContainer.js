@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {Button} from 'react-bootstrap'
-import Settings from '../../config/settings'
 import CreateEvent from '../createEvent/CreateEvent'
 import {FaRegCalendarPlus} from 'react-icons/fa'
 import './eventcontainer.css'
@@ -9,9 +8,6 @@ import './eventcontainer.css'
 
 export default function EventContainer() {
     const [modalShow, setModalShow] = useState(false)
-
-    const eLink = `${Settings.domain.client}/event/create`
-
 
     return (
         <React.Fragment>
