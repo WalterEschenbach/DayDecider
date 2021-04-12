@@ -4,3 +4,8 @@
 	justify-content: space-between;
 	width: 100%;
 }
+
+.logout-button {
+	border: none;
+	background-color: transparent;
+}

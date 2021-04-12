@@ -32,7 +32,7 @@ export default function AccountModal(props) {
         <Modal.Header closeButton>
           <Modal.Title className="aModalTitle" id="contained-modal-title-vcenter">
             Account Settings
-            <button onClick={onClick}><h4><u>Logout</u></h4></button>
+            <button className="logout-button" onClick={onClick}><h4><u>Logout</u></h4></button>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

@@ -15,7 +15,7 @@ export default function Account(props) {
 
     return (
         <React.Fragment>
-                <Button className="account-btn" onClick={()=>setModalShow(true)}>
+                <Button className="account-btn" variant="outline-primary" onClick={()=>setModalShow(true)}>
                     <FaAngleDown style={{margin: "0px 7px"}}/>
                     <div className="name"><h3>Name{name}</h3></div>
                     <img alt="MJ_Profile" src="./michael_jordan.jpg" className="profile-pic">{props.pic}</img>
