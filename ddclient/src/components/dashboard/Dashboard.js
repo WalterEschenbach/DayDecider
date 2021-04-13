@@ -7,9 +7,8 @@ import Settings from '../../config/settings'
 import './dashboard.css'
 
 export default function Dashboard() {
-    const [events, setEvents] = useState([]);
-    const [eventFocus] = useState(events[0]);
-    const [user, setUser] = useState();
+    const [eventList, setEventList] = useState([]);
+    const [eventFocus, setEventFocus] = useState(eventList[0]);
 
     useEffect(()=>{
         const tURL = `${Settings.domain.server}/event/find`
@@ -17,15 +16,22 @@ export default function Dashboard() {
 
         transport.get(tURL)
         .then((res)=> {
-            setEvents(res.data)
+            setEventList(res.data)
             console.log(res)
         })
     },[])
 
+    useEffect(()=>{
+        setEventFocus(eventFocus)
+    }, [eventFocus])
+
     return (
         <div className="dashContainer">
-            <DetailContainer events={events} eventFocus={eventFocus}/>
-            <CalendarContainer eventFocus={eventFocus}/>            
+            <DetailContainer 
+            eventList={eventList} 
+            eventFocus={eventFocus} 
+            setEventFocus={setEventFocus}/>
+            <CalendarContainer eventFocus={eventFocus} />            
         </div>
     )
 }

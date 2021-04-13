@@ -1,2 +1,22 @@
+/*
+#17252A
+#2B7A78
+#3AAFA9
+#DEF2F1
+#FEFFFF
+#e0dfcc
+
+*/
+
 .App {
+	background-color: #e0dfcc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #17252a;
 }

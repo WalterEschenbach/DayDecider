@@ -1,11 +1,14 @@
 import React from 'react'
 import {Accordion, Card} from 'react-bootstrap'
+import './eventitem.css'
 
 export default function EventItem(props) {
+
     return (
-        <Accordion.Collapse eventKey="0">
-            <Card.Body><h4>{props.event.name}</h4></Card.Body>
-        </Accordion.Collapse>
+            <Accordion.Collapse onClick={props.onClick} key={props.event} className={props.className} eventKey="0" >
+                <Card.Body><h4>{props.event.name}</h4></Card.Body>
+            </Accordion.Collapse>
+        
    
     )
 }

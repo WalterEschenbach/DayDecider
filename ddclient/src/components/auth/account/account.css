@@ -9,8 +9,22 @@
 	width: fit-content;
 	right: 5px;
 	top: 5px;
+	border: 1px solid #17252a;
 }
-
+.account-btn:hover {
+	background-color: #17252a;
+	border: none;
+}
+.account-btn:hover .name h3 {
+	color: #e0dfcc;
+}
+.account-btn:hover .aIcon {
+	color: #e0dfcc;
+}
+.aIcon {
+	margin: 0px 7px;
+	color: #17252a;
+}
 .name {
 	padding-right: 5px;
 }

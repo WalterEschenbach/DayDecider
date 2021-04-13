@@ -8,26 +8,53 @@ import './detailcontainer.css'
 
 
 export default function DetailContainer(props) {
-    const [events, setEvents] = useState(props.events)
+    const [eventList, setEventList] = useState(props.eventList)
+    const [eventFocus, setEventFocus] = useState(props.eventFocus)
+    const [activeKey, setActiveKey] = useState("0")
     
     useEffect(()=>{
-        setEvents(props.events)
-    }, [props.events])
+        setEventList(props.eventList)
+        props.setEventFocus(eventFocus)
+    }, [props.eventList, props.eventFocus, props, eventFocus])
+
+    const onClick = (index) => {
+        console.log(index)
+        setEventFocus(index.target.innerText);
+        setActiveKey("1")
+    }
 
     return (
         <div className="dContainer">
-             <Accordion defaultActiveKey="0">
+             <Accordion defaultActiveKey="0" activeKey={activeKey}>
                     <Card >
-                        <Accordion.Toggle as={Card.Header} eventKey="0" className="aToggle">
+                        <Accordion.Toggle 
+                        as={Card.Header} 
+                        eventKey="0" 
+                        className="aToggle"
+                        onClick={()=>setActiveKey("0")}
+                        style={{backgroundColor: "#17252A", color: "#FEFFFF"}}
+                        >
                             <EventContainer/>
                         </Accordion.Toggle>
-                            {events.map((event)=>(<EventItem key={event.name} event={event} /> ))}
+                        {eventList.map((event)=>{
+                        console.log('index:', event);
+                        console.log('eventFocus:', eventFocus)
+                        const className = eventFocus === event.name ? "media-active" : 'media';
+                        return(
+                                <EventItem
+                                onClick={onClick}
+                                eventFocus={eventFocus}
+                                className={className} 
+                                event={event} 
+                                key={event.name}
+                                />
+                            )})}
                     </Card>
                     <Card>
-                        <Accordion.Toggle as={Card.Header} eventKey="1">
+                        
                             <GroupContainer/>
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="1">
+                        
+                        <Accordion.Collapse style={{backgroundColor: "#e0dfcc"}} eventKey="1">
                             <Card.Body>Hello! I'm another body</Card.Body>
                         </Accordion.Collapse>
                     </Card>

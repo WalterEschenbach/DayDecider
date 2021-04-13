@@ -17,13 +17,13 @@ export default function Account(props) {
     useEffect(()=>{
         setName(email)
         setPic(picture)
-    },[name, pic]);
+    },[email, picture]);
 
 
     return (
         <React.Fragment>
                 <Button className="account-btn" variant="outline-primary" onClick={()=>setModalShow(true)}>
-                    <FaAngleDown style={{margin: "0px 7px"}}/>
+                    <FaAngleDown className="aIcon" />
                     <div className="name"><h3>{name}</h3></div>
                     <img alt="MJ_Profile" src={pic} className="profile-pic">{props.pic}</img>
                 </Button> 

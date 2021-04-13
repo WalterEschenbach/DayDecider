@@ -6,6 +6,9 @@
 	flex-direction: row;
 	width: 100%;
 }
+.eContainer h2 {
+	color: #feffff;
+}
 .create-event-btn {
 	position: absolute;
 	right: 0;
@@ -15,4 +18,5 @@
 	align-items: center;
 	height: fit-content;
 	padding: 10px;
+	/*color: #e0dfcc;*/
 }

@@ -1,8 +1,22 @@
 .dContainer {
 	height: 100vh;
 	width: 25vw;
+	border: none;
+	background-color: transparent;
 }
 .aToggle {
 	padding-left: 0;
 	padding-right: 0;
+}
+.media-active {
+	background-color: #3aafa9;
+}
+.media-active {
+	color: #e0dfcc;
+}
+.media {
+	background-color: #e0dfcc;
+}
+.media-active h4 {
+	color: #feffff;
 }

@@ -3,4 +3,9 @@
 	justify-content: center;
 }
 .gContainer {
+	background-color: #17252a;
+	border: none;
+}
+.gContainer .title h2 {
+	color: #feffff;
 }
