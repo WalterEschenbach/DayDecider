@@ -121,7 +121,7 @@ export default function CreateEvent(props) {
                         <div className="groupContainer">
                             {emails.map((email)=>(<h5 key={email}>{email}</h5>))}
                         </div>
-                        <Button variant="primary" type="submit" disabled={disable}>Submit</Button>
+                        <Button className="btn-modal" variant="primary" type="submit" disabled={disable}>Submit</Button>
                         {eventCreated && (<h5 style={{color: "#17D500"}}>Event Created!</h5>)}
                     </Form>
                     <br/>
@@ -131,7 +131,7 @@ export default function CreateEvent(props) {
         </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button className="btn-modal" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
 
