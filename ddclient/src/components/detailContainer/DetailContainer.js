@@ -18,7 +18,6 @@ export default function DetailContainer(props) {
     }, [props.eventList, props.eventFocus, props, eventFocus])
 
     const onClick = (index) => {
-        console.log(index)
         setEventFocus(index.target.innerText);
         setActiveKey("1")
     }
@@ -37,8 +36,6 @@ export default function DetailContainer(props) {
                             <EventContainer/>
                         </Accordion.Toggle>
                         {eventList.map((event)=>{
-                        console.log('index:', event);
-                        console.log('eventFocus:', eventFocus)
                         const className = eventFocus === event.name ? "media-active" : 'media';
                         return(
                                 <EventItem

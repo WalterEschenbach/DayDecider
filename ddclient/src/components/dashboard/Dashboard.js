@@ -15,10 +15,7 @@ export default function Dashboard() {
         const transport = axios.create({withCredentials: true})
 
         transport.get(tURL)
-        .then((res)=> {
-            setEventList(res.data)
-            console.log(res)
-        })
+        .then((res)=> {setEventList(res.data)})
     },[])
 
     useEffect(()=>{

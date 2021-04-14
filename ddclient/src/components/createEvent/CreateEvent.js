@@ -35,7 +35,7 @@ export default function CreateEvent(props) {
 
         if(validator.isEmail(email)){   
             setEmails([...emails, email])
-            console.log('email submitted', emails)
+            console.log('Email submitted:', emails)
             setInvalidEmail(false)
             setEmail('')
         }else{
