@@ -8,26 +8,33 @@ import './dashboard.css'
 
 export default function Dashboard() {
     const [eventList, setEventList] = useState([]);
-    const [eventFocus, setEventFocus] = useState(eventList[0]);
+    const [eventFocus, setEventFocus] = useState();
+    const [group, setGroup] = useState([]);
 
     useEffect(()=>{
         const tURL = `${Settings.domain.server}/event/find`
         const transport = axios.create({withCredentials: true})
 
         transport.get(tURL)
-        .then((res)=> {setEventList(res.data)})
+        .then((res)=> {
+            setEventList(res.data)
+            console.log(res.data)
+        })
     },[])
 
     useEffect(()=>{
         setEventFocus(eventFocus)
-    }, [eventFocus])
+        if(eventFocus){setGroup(eventList.find(event=>event.name ==eventFocus).group)}
+    }, [eventFocus, eventList])
 
     return (
         <div className="dashContainer">
             <DetailContainer 
             eventList={eventList} 
             eventFocus={eventFocus} 
-            setEventFocus={setEventFocus}/>
+            setEventFocus={setEventFocus}
+            group={group}
+            />
             <CalendarContainer eventFocus={eventFocus} />            
         </div>
     )

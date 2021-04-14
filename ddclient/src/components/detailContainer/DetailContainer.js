@@ -49,11 +49,9 @@ export default function DetailContainer(props) {
                     </Card>
                     <Card>
                         
-                            <GroupContainer/>
+                            <GroupContainer group={props.group}/>
                         
-                        <Accordion.Collapse style={{backgroundColor: "#e0dfcc"}} eventKey="1">
-                            <Card.Body>Hello! I'm another body</Card.Body>
-                        </Accordion.Collapse>
+                       
                     </Card>
                 </Accordion>
             
