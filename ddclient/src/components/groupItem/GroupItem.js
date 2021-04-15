@@ -9,7 +9,7 @@ export default function GroupItem(props) {
             eventKey="1" 
             style={{backgroundColor: "#e0dfcc"}} 
             >
-                <Card.Body><h6>{props.member && props.member}</h6></Card.Body>
+                <Card.Body><h6>{props.member && props.member[0].email}</h6></Card.Body>
             </Accordion.Collapse>
     )
 }

@@ -12,8 +12,6 @@ export default function DetailContainer(props) {
     const [eventFocus, setEventFocus] = useState(props.eventFocus)
     const [activeKey, setActiveKey] = useState("0")
     
-    console.log('DetailContainer props.group:', props.group)
-
     useEffect(()=>{
         setEventList(props.eventList)
         props.setEventFocus(eventFocus)
@@ -50,10 +48,7 @@ export default function DetailContainer(props) {
                             )})}
                     </Card>
                     <Card>
-                        
-                            <GroupContainer group={props.group}/>
-                        
-                       
+                        <GroupContainer group={props.group}/>
                     </Card>
                 </Accordion>
             
