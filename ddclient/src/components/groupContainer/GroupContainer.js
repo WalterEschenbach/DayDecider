@@ -4,6 +4,7 @@ import GroupItem from '../groupItem/GroupItem'
 import './groupcontainer.css'
 
 export default function GroupContainer(props) {
+    console.log('GroupContainer props.group:',props.group)
     return (
         <React.Fragment>
 

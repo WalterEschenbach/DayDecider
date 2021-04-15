@@ -1,5 +1,7 @@
 const router = require('express').Router();
 let Event = require('../models/event.model')
+let User = require('../models/user.model')
+const stages = require('../utils/dataAggregationPipeline')
 
 router.route('/create').post((req, res)=>{
     console.log('req.user', req.user)
@@ -18,9 +20,10 @@ router.route('/create').post((req, res)=>{
 });
 
 router.route('/find').get((req,res)=>{
-    Event.find({group: {$all: [req.user.email]}}, (err, event)=>{
+    User.aggregate(stages, (err, event)=>{
         if(err){
-            console.log('Error retrieving event');
+            console.log('Error retrieving event', err);
+            console.log('stages:', stages)
         } else{
             res.json(event);
         }

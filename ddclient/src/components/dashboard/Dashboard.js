@@ -9,7 +9,7 @@ import './dashboard.css'
 export default function Dashboard() {
     const [eventList, setEventList] = useState([]);
     const [eventFocus, setEventFocus] = useState();
-    const [group, setGroup] = useState([]);
+    const [group, setGroup] = useState();
 
     useEffect(()=>{
         const tURL = `${Settings.domain.server}/event/find`
@@ -24,8 +24,14 @@ export default function Dashboard() {
 
     useEffect(()=>{
         setEventFocus(eventFocus)
-        if(eventFocus){setGroup(eventList.find(event=>event.name ==eventFocus).group)}
-    }, [eventFocus, eventList])
+
+        
+             if(eventFocus){setGroup(eventList.find(event=>event.eventName ===eventFocus).members)}
+             console.log('Dashboard group:', group)
+        
+        //if(eventFocus){setGroup(eventList.find(event=>event.eventName ==eventFocus).members)}
+        //if(eventFocus){console.log('Dashboard group:',eventList.find(event=>event.eventName ==eventFocus).members)}
+    }, [eventFocus, eventList, group])
 
     return (
         <div className="dashContainer">
