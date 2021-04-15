@@ -20,3 +20,19 @@
 	padding: 10px;
 	/*color: #e0dfcc;*/
 }
+.aToggle {
+	padding-left: 0;
+	padding-right: 0;
+}
+.media-active {
+	background-color: #2b7a78;
+}
+.media-active {
+	color: #e0dfcc;
+}
+.media {
+	background-color: #e0dfcc;
+}
+.media-active h4 {
+	color: #feffff;
+}
