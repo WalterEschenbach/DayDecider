@@ -8,14 +8,14 @@ import './detailcontainer.css'
 
 
 export default function DetailContainer(props) {
-    const [eventList, setEventList] = useState(props.eventList)
+    const [data, setData] = useState(props.data)
     const [eventFocus, setEventFocus] = useState(props.eventFocus)
     const [activeKey, setActiveKey] = useState("0")
     
     useEffect(()=>{
-        setEventList(props.eventList)
+        setData(props.data)
         props.setEventFocus(eventFocus)
-    }, [props.eventList, props.eventFocus, props, eventFocus])
+    }, [props.data, props.eventFocus, props, eventFocus])
 
     const onClick = (index) => {
         setEventFocus(index.target.innerText);
@@ -35,7 +35,7 @@ export default function DetailContainer(props) {
                         >
                             <EventContainer/>
                         </Accordion.Toggle>
-                        {eventList.map((event)=>{
+                        {data.map((event)=>{
                         const className = eventFocus === event.eventName ? "media-active" : 'media';
                         return(
                                 <EventItem

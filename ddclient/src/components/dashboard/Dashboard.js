@@ -7,7 +7,7 @@ import Settings from '../../config/settings'
 import './dashboard.css'
 
 export default function Dashboard() {
-    const [eventList, setEventList] = useState([]);
+    const [data, setData] = useState([]);
     const [eventFocus, setEventFocus] = useState();
     const [group, setGroup] = useState([]);
 
@@ -17,7 +17,7 @@ export default function Dashboard() {
 
         transport.get(tURL)
         .then((res)=> {
-            setEventList(res.data)
+            setData(res.data)
             console.log(res.data)
         })
     },[])
@@ -29,16 +29,16 @@ export default function Dashboard() {
 
     useEffect(()=>{
         try{
-            setGroup(eventList.find(event=>event.eventName ===eventFocus).members)
+            setGroup(data.find(event=>event.eventName ===eventFocus).members)
         } catch{
             console.log('Group Undefined at Dashboard')
         }
-    }, [eventFocus, group])
+    }, [eventFocus, group, data])
 
     return (
         <div className="dashContainer">
             <DetailContainer 
-            eventList={eventList} 
+            data={data} 
             eventFocus={eventFocus} 
             setEventFocus={setEventFocus}
             group={group}
