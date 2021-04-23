@@ -10,6 +10,7 @@
 	right: 5px;
 	top: 5px;
 	border: 1px solid #17252a;
+	background-color: transparent;
 	outline: none;
 }
 .account-btn:hover {
@@ -24,10 +25,10 @@
 }
 
 .account-btn:hover .name h3 {
-	color: #e0dfcc;
+	color: #FEFFFF;
 }
 .account-btn:hover .aIcon {
-	color: #e0dfcc;
+	color: #FEFFFF;
 }
 .aIcon {
 	margin: 0px 7px;
