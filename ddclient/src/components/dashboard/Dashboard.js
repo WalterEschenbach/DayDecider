@@ -30,6 +30,7 @@ export default function Dashboard() {
     useEffect(()=>{
         try{
             setGroup(data.find(event=>event.eventName ===eventFocus).members)
+            console.log('Group:', group)
         } catch{
             console.log('Group Undefined at Dashboard')
         }

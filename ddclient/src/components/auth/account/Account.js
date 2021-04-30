@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import queryString from 'query-string'
-import { Button } from 'react-bootstrap'
 import { FaAngleDown } from 'react-icons/fa'
 import AccountModal from '../accountModal/AccountModal'
 import './account.css'

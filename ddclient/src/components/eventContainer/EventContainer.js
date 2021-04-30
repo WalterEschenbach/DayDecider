@@ -41,7 +41,7 @@ export default function EventContainer(props) {
                     eventFocus={props.eventFocus}
                     className={className} 
                     event={event} 
-                    key={event.name}
+                    key={event.eventName}
                     />
                     )})}
         </React.Fragment>

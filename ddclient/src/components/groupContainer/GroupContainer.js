@@ -12,7 +12,7 @@ export default function GroupContainer(props) {
                 </header>
             </Accordion.Toggle>
             {props.group && props.group.map((member)=>(
-                <GroupItem member={member}/>
+                <GroupItem member={member} key={member[0]?.email}/>
             ))}
         </React.Fragment>
     )
