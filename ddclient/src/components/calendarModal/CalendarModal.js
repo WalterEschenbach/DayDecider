@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import CalendarComponent from '../calendarComponent/CalendarComponent'
+import CalendarSelectComponent from '../calendarSelectComponent/CalendarSelectComponent'
 
 export default function CalendarModal(props) {
     const [show, setShow] = useState(false);
@@ -19,7 +19,7 @@ export default function CalendarModal(props) {
                     <Modal.Title>Select Dates</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <CalendarComponent 
+                    <CalendarSelectComponent 
                     setStartDate={props.setStartDate}
                     setEndDate={props.setEndDate}
                     />
