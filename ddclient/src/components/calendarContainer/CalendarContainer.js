@@ -11,7 +11,7 @@ export default function CalendarContainer(props) {
         <div className="cContainer">
             <row style={{display:"flex", flexDirection: "row", height: "100%", width: "100%"}}>
                 <CalendarComponent/>
-                <CalendarDetail/>
+                <CalendarDetail eventFocus={props.eventFocus}/>
             </row>
             <row style={{display:"flex", flexDirection: "row", height: "100%", width: "100%"}}>
                 <CalendarChart/>
