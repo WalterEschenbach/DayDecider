@@ -1,29 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import Account from '../auth/account/Account'
-import CalendarModal from '../calendarModal/CalendarModal'
+import CalendarDetail from '../calendarDetail/CalendarDetail'
+import CalendarChart from '../calendarChart/CalendarChart'
+import CalendarComponent from '../calendarComponent/CalendarComponent'
 import './calendarcontainer.css'
 
 export default function CalendarContainer(props) {
-    const [eventFocus, setEventFocus] = useState(props.eventFocus);
-    const [startDate, setStartDate] = useState(null)
-    const [endDate, setEndDate] = useState(null)
-
-    useEffect(() => {
-        setEventFocus(props.eventFocus)
-    }, [props.eventFocus])
-
 
     return (
         <div className="cContainer">
-            <h1>{eventFocus}</h1>
-            <CalendarModal 
-            setStartDate={setStartDate}
-            setEndDate={setEndDate}
-            startDate={startDate}
-            endDate={endDate}
-            />
-            <Account />
-            <div className="cTitle"><h2>DAYDECIDER</h2></div>
+            <row style={{display:"flex", flexDirection: "row", height: "100%", width: "100%"}}>
+                <CalendarComponent/>
+                <CalendarDetail/>
+            </row>
+            <row style={{display:"flex", flexDirection: "row", height: "100%", width: "100%"}}>
+                <CalendarChart/>
+            </row>
+                <Account />
+                <div className="cTitle"><h2>DAYDECIDER</h2></div>
         </div>
     )
 }

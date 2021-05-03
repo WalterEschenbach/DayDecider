@@ -3,7 +3,7 @@ import './calendarcomponent.css'
 
 function CalendarComponent() {
     return (
-        <div>
+        <div className="ccContainer">
             CalendarComponent
         </div>
     )

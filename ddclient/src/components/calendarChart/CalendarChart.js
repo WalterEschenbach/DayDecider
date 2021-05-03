@@ -3,7 +3,7 @@ import './calendarchart.css'
 
 function CalendarChart() {
     return (
-        <div>
+        <div className="cChartContainer">
             Calendar Chart
         </div>
     )
