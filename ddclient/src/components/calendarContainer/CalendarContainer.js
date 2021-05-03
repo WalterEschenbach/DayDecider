@@ -5,6 +5,8 @@ import './calendarcontainer.css'
 
 export default function CalendarContainer(props) {
     const [eventFocus, setEventFocus] = useState(props.eventFocus);
+    const [startDate, setStartDate] = useState(null)
+    const [endDate, setEndDate] = useState(null)
 
     useEffect(() => {
         setEventFocus(props.eventFocus)
@@ -14,7 +16,12 @@ export default function CalendarContainer(props) {
     return (
         <div className="cContainer">
             <h1>{eventFocus}</h1>
-            <CalendarModal />
+            <CalendarModal 
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+            startDate={startDate}
+            endDate={endDate}
+            />
             <Account />
             <div className="cTitle"><h2>DAYDECIDER</h2></div>
         </div>

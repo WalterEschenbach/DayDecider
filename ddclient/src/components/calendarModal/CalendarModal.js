@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import CalendarComponent from '../calendarComponent/CalendarComponent'
 
-export default function CalendarModal() {
+export default function CalendarModal(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -18,7 +18,12 @@ export default function CalendarModal() {
                 <Modal.Header closeButton>
                     <Modal.Title>Select Dates</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><CalendarComponent /></Modal.Body>
+                <Modal.Body>
+                    <CalendarComponent 
+                    setStartDate={props.setStartDate}
+                    setEndDate={props.setEndDate}
+                    />
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
