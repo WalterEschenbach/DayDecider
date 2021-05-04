@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Account from '../auth/account/Account'
 import CalendarDetail from '../calendarDetail/CalendarDetail'
-import CalendarChart from '../calendarChart/CalendarChart'
 import CalendarComponent from '../calendarComponent/CalendarComponent'
+import Draggable from 'react-draggable'
 import './calendarcontainer.css'
 
 export default function CalendarContainer(props) {
 
     return (
         <div className="cContainer">
-            <row style={{display:"flex", flexDirection: "row", height: "100%", width: "100%"}}>
-                <CalendarComponent/>
-                <CalendarDetail eventFocus={props.eventFocus}/>
-            </row>
-            <row style={{display:"flex", flexDirection: "row", height: "100%", width: "100%"}}>
-                <CalendarChart/>
-            </row>
+                <Draggable>
+                    <div style={{position: "absolute", width: "30rem", height: "40rem"}}>
+                        <CalendarDetail eventFocus={props.eventFocus}/>
+                    </div>
+                </Draggable>
+                <CalendarComponent />
                 <Account />
                 <div className="cTitle"><h2>DAYDECIDER</h2></div>
         </div>
