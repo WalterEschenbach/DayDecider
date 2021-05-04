@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import CalendarSelectComponent from '../calendarSelectComponent/CalendarSelectComponent'
+import './calendarmodal.css'
 
 export default function CalendarModal(props) {
     const [show, setShow] = useState(false);

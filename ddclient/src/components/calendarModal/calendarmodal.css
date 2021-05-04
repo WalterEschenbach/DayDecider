@@ -1,3 +1,7 @@
-.calendar-modal{
-    height: fit-content;
+.calendar-modal {
+	height: fit-content;
+}
+.calendar-modal Button {
+	color: #feffff;
+	border: 1px solid #feffff;
 }

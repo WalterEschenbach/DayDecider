@@ -1,7 +1,7 @@
 import React from 'react'
-import './calendarcomponent.css'
+import './calendardisplaycomponent.css'
 
-function CalendarComponent() {
+function CalendarDisplayComponent() {
     return (
         <div className="ccContainer">
             CalendarComponent
@@ -9,4 +9,4 @@ function CalendarComponent() {
     )
 }
 
-export default CalendarComponent
+export default CalendarDisplayComponent
