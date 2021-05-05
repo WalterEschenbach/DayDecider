@@ -22,7 +22,7 @@ export default function EventContainer(props) {
             eventKey="0" 
             className="aToggle"
             onClick={()=>props.setActiveKey("0")}
-            style={{backgroundColor: "#17252A", color: "#FEFFFF"}}
+            style={{backgroundColor: "#17252A", color: "#FEFFFF", borderRadius: "10px", margin: "2px 0px"}}
             >
                 <div className="eContainer">
                     <h2>EVENTS</h2>

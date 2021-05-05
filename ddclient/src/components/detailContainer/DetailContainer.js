@@ -11,8 +11,8 @@ export default function DetailContainer(props) {
 
     return (
         <div className="dContainer">
-             <Accordion defaultActiveKey="0" activeKey={activeKey}>
-                    <Card>
+             <Accordion defaultActiveKey="0" activeKey={activeKey} style={{border: "none"}}>
+                    <Card style={{border: "none"}}>
                         <EventContainer 
                         data={props.data} 
                         eventFocus={props.eventFocus} 
@@ -20,7 +20,7 @@ export default function DetailContainer(props) {
                         setActiveKey={setActiveKey} 
                         activeKey={activeKey}/>
                     </Card>
-                    <Card>
+                    <Card style={{border: "none"}}>
                         <GroupContainer group={props.group}/>
                     </Card>
                 </Accordion>

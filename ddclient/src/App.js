@@ -9,14 +9,15 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <div className="appContainer">
         <Router>
-          <Route exact path="/"><Dashboard/></Route>
-          <Route path="/signup"><SignUp/></Route>
-          <Route path="/logout"><Logout/></Route>
-          <Route path="/login"><Login/></Route>
-          <Route path="/event/create"><CreateEvent/></Route>
-        </Router>
-        
+            <Route exact path="/"><Dashboard/></Route>
+            <Route path="/signup"><SignUp/></Route>
+            <Route path="/logout"><Logout/></Route>
+            <Route path="/login"><Login/></Route>
+            <Route path="/event/create"><CreateEvent/></Route>
+          </Router>
+      </div>
     </div>
   );
 }

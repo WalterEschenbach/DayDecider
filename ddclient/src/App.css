@@ -9,8 +9,13 @@
 */
 
 .App {
-	background-color: #e0dfcc;
+	display: flex;
+	justify-content: center;
+}
+.appContainer {
+	background-color: #f8f7e8;
 	overflow: hidden;
+	width: 92vw;
 }
 
 h1,

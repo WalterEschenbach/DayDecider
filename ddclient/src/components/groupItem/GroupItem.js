@@ -7,7 +7,7 @@ export default function GroupItem(props) {
             <Accordion.Collapse 
             key={props.member} 
             eventKey="1" 
-            style={{backgroundColor: "#e0dfcc"}} 
+            style={{backgroundColor: "#f8f7e8"}} 
             >
                 <Card.Body><h6>{props.member && props.member[0].email}</h6></Card.Body>
             </Accordion.Collapse>

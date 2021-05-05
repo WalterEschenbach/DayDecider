@@ -23,15 +23,17 @@
 .aToggle {
 	padding-left: 0;
 	padding-right: 0;
+	border-radius: 10px;
 }
 .media-active {
-	background-color: #2b7a78;
+	background-color: #5a7e7c;
+	border-radius: 10px;
 }
 .media-active {
 	color: #e0dfcc;
 }
 .media {
-	background-color: #e0dfcc;
+	background-color: #f8f7e8;
 }
 .media-active h4 {
 	color: #feffff;

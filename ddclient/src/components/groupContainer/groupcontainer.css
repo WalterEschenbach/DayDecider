@@ -5,6 +5,7 @@
 .gContainer {
 	background-color: #17252a;
 	border: none;
+	border-radius: 10px;
 }
 .gContainer .title h2 {
 	color: #feffff;
