@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CalendarModal from '../calendarModal/CalendarModal'
+import Draggable from 'react-draggable'
+
 import './calendardetail.css'
 
 function CalendarDetail(props) {
@@ -12,6 +14,8 @@ function CalendarDetail(props) {
     }, [props.eventFocus])
 
     return (
+        <Draggable>
+        <div style={{position: "absolute", width: "30rem", height: "40rem", zIndex: "2", right:"25px", bottom: "25px"}}>
         <div className="cdContainer">
             <h1>{eventFocus}</h1>
             <CalendarModal 
@@ -21,6 +25,8 @@ function CalendarDetail(props) {
             endDate={endDate}
             />
         </div>
+        </div>
+        </Draggable>
     )
 }
 
