@@ -12,16 +12,23 @@
 	padding-top: 75px;
 	padding-bottom: 30px;
 }
+.month h2 {
+	text-shadow: 2px 2px 4px #b9b9b9;
+}
 .weekdays {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
+	text-shadow: 2px 2px 4px #b9b9b9;
 }
 .weekday {
 	display: flex;
 	width: 100%;
 	justify-content: center;
+}
+.arrow {
+	text-shadow: 2px 2px 4px #b9b9b9;
 }
 .arrow:hover {
 	cursor: pointer;
