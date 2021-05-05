@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {FaChevronLeft, FaChevronRight} from 'react-icons/fa'
+import moment from 'moment'
 import './calendarcomponent.css'
 
 
@@ -9,30 +10,29 @@ function CalendarComponent() {
     const [day] = useState(new Date().getDay())
     const [month, setMonth] = useState(new Date().getMonth())
     const [year, setYear] = useState(new Date(). getFullYear())
-    const [firstDayOfMonth] = useState(new Date(year, month, 1).getDay())
-    const [lastDayOfMonth] = useState(new Date(year, month +1, 0).getDay())
-    const [lastDateOfMonth] = useState(new Date(year, month +1, 0).getDate())
-    const [pDate] = useState(new Date(year, month, 0).getDate())
+    const [firstDayOfMonth, setFirstDayOfMonth] = useState(new Date(year, month, 1).getDay())
+    const [lastDayOfMonth, setLastDayOfMonth] = useState(new Date(year, month +1, 0).getDay())
+    const [lastDateOfMonth, setLastDateOfMonth] = useState(new Date(year, month +1, 0).getDate())
+    const [pDate, setPDate] = useState(new Date(year, month, 0).getDate())
 
     
-    // useEffect(()=>{
-    //     console.log(month)
-    // }, [month])
+    useEffect(()=>{
+        if(month<0){setMonth(11)}
+        if(month>11){setMonth(0)}
+        setFirstDayOfMonth(new Date(year, month, 1).getDay())
+        setLastDayOfMonth(new Date(year, month +1, 0).getDay())
+        setLastDateOfMonth(new Date(year, month +1, 0).getDate())
+        setPDate(new Date(year, month, 0).getDate())
+        
+    }, [month, year])
 
-
-   
-
-    console.log("Locale Date:",localeDate)
-    console.log('Date:', date)
-    console.log('Day:', day)
-    console.log('Month:', month)
-    console.log('First Day of Month:', firstDayOfMonth)
-    console.log("Last Day of Month:", lastDayOfMonth)
-    console.log("Last Date of Month:", lastDateOfMonth)
-
-
-
-
+    // console.log("Locale Date:",localeDate)
+    // console.log('Date:', date)
+    // console.log('Day:', day)
+    // console.log('Month:', month)
+    // console.log('First Day of Month:', firstDayOfMonth)
+    // console.log("Last Day of Month:", lastDayOfMonth)
+    // console.log("Last Date of Month:", lastDateOfMonth)
 
     const days = []
     const fDays = []
@@ -51,19 +51,27 @@ function CalendarComponent() {
     }
 
     function pMonth() {
-        console.log("PREVIOUS")
+       if(month===0){
+           setMonth(11)
+           setYear(year-1)
+       }
+        setMonth(month-1)
     }
 
     const nMonth = () => {
-        console.log("NEXT")
+        if(month===11){
+            setMonth(0)
+            setYear(year+1)
+        }
+        else{setMonth(month+1)}
     }
 
     return (
         <div className="calendarContainer" >
             <div className="month">
-                <FaChevronLeft className="arrow" onClick={pMonth}/>
-                {localeDate}
-                <FaChevronRight className="arrow" onClick={nMonth}/>
+                <FaChevronLeft className="arrow" onClick={pMonth} size="2rem"/>
+                    <h2>{`${moment(`${month+1}`).format("MMMM")}, ${moment(`${year}`).format("YYYY")}`}</h2>
+                <FaChevronRight className="arrow" onClick={nMonth} size="2rem"/>
             </div>
             <div className="weekdays">
                 <div className="weekday">Sun</div>
