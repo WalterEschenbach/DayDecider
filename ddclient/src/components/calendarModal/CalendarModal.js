@@ -29,7 +29,7 @@ export default function CalendarModal(props) {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={props.handleSave}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

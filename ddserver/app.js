@@ -21,7 +21,8 @@ app.use(cors(corsOptions))
 
 mongoose.connect(connectionURL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 })
 .then(()=> console.log('connected to DB'))
 .catch(error => console.log(error))

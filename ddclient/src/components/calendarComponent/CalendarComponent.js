@@ -5,11 +5,11 @@ import './calendarcomponent.css'
 
 
 function CalendarComponent() {
-    const [localeDate, setLocaleDate] = useState(new Date().toLocaleDateString())
-    const [date] = useState(new Date().getDate())
-    const [day] = useState(new Date().getDay())
+    //const [localeDate, setLocaleDate] = useState(new Date().toLocaleDateString())
+    //const [date] = useState(new Date().getDate())
+    //const [day] = useState(new Date().getDay())
     const [month, setMonth] = useState(new Date().getMonth())
-    const [year, setYear] = useState(new Date(). getFullYear())
+    const [year, setYear] = useState(new Date().getFullYear())
     const [firstDayOfMonth, setFirstDayOfMonth] = useState(new Date(year, month, 1).getDay())
     const [lastDayOfMonth, setLastDayOfMonth] = useState(new Date(year, month +1, 0).getDay())
     const [lastDateOfMonth, setLastDateOfMonth] = useState(new Date(year, month +1, 0).getDate())
@@ -70,7 +70,7 @@ function CalendarComponent() {
         <div className="calendarContainer" >
             <div className="month">
                 <FaChevronLeft className="arrow" onClick={pMonth} size="2rem"/>
-                    <h2>{`${moment(`${month+1}`).format("MMMM")}, ${moment(`${year}`).format("YYYY")}`}</h2>
+                    <h2>{`${moment(`${month+1}`, "M").format("MMMM")}, ${moment(`${year}`, "Y").format("YYYY")}`}</h2>
                 <FaChevronRight className="arrow" onClick={nMonth} size="2rem"/>
             </div>
             <div className="weekdays">

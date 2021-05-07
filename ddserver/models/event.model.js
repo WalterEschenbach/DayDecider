@@ -3,7 +3,8 @@ const Schema = mongoose.Schema
 
 const eventSchema = new Schema({
     name: {type: String},
-    group: {type: Array}
+    group: {type: Array},
+    test: {type: String}
 }, {
     timestamps: true
 })
