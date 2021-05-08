@@ -30,8 +30,8 @@ function CalendarDetail(props) {
             endDate,
             eventFocus
         }
-        const transport = axios.create({withCredentials: true})
 
+        const transport = axios.create({withCredentials: true})
         transport.post(route, body)
         .then(res=> {
             console.log('response:', res)
@@ -42,9 +42,18 @@ function CalendarDetail(props) {
         setShow(false)
     }
 
+    const styles = {
+        position: "absolute", 
+        width: "fit-content", 
+        height: "20rem", 
+        zIndex: "2", 
+        right:"25px", 
+        bottom: "25px"
+    }
+
     return (
         <Draggable >
-        <div style={{position: "absolute", width: "fit-content", height: "20rem", zIndex: "2", right:"25px", bottom: "25px"}} >
+        <div style={styles} >
         <div className="cdContainer">
             <h1>{eventFocus}</h1>
             <CalendarModal 
@@ -56,6 +65,7 @@ function CalendarDetail(props) {
             show={show}
             setShow={setShow}
             />
+            <br/>
             <h3>{`Start Date: ${startDate?moment(startDate).format('MMMM Do YYYY'):""}`}</h3>
             <h3>{`End Date: ${endDate?moment(endDate).format('MMMM Do YYYY'):""}`}</h3>
         </div>
