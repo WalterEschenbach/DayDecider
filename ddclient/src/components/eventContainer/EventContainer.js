@@ -14,6 +14,14 @@ export default function EventContainer(props) {
         props.setEventFocus(index.target.innerText);
         props.setActiveKey("1")
     }
+
+    const accordionToggleStyle = {
+        backgroundColor: "#17252A", 
+        color: "#FEFFFF", 
+        borderRadius: "10px", 
+        margin: "2px 0px", 
+        cursor: "pointer"
+    }
     
     return (
         <React.Fragment>
@@ -22,7 +30,7 @@ export default function EventContainer(props) {
             eventKey="0" 
             className="aToggle"
             onClick={()=>props.setActiveKey("0")}
-            style={{backgroundColor: "#17252A", color: "#FEFFFF", borderRadius: "10px", margin: "2px 0px"}}
+            style={accordionToggleStyle}
             >
                 <div className="eContainer">
                     <h2>EVENTS</h2>

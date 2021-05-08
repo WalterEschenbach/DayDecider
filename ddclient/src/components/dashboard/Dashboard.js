@@ -42,7 +42,7 @@ export default function Dashboard() {
             setEventFocus={setEventFocus}
             group={group}
             />
-            <CalendarContainer eventFocus={eventFocus} />            
+            <CalendarContainer eventFocus={eventFocus} data={data} />            
         </div>
     )
 }

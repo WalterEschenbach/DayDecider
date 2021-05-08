@@ -41,6 +41,15 @@
         });
 
         stages.push({
+          '$lookup': {
+            'from': 'dates', 
+            'localField': 'events.name', 
+            'foreignField': 'eventFocus', 
+            'as': 'startDate'
+          }
+        })
+
+        stages.push({
             '$group': {
                 '_id': '$events._id', 
                 'eventName': {
@@ -48,8 +57,13 @@
                 }, 
                 'members': {
                   '$addToSet': '$user'
+                },
+                'startDate':{
+                  '$addToSet': '$startDate'
                 }
               }
         });
+
+       
 
     module.exports = stages;

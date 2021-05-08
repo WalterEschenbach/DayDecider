@@ -5,7 +5,7 @@ const datesSchema = new Schema({
     email: {type: String},
     startDate: {type: String},
     endDate: {type: String},
-    eventFocus: {type: String}
+    eventFocus: {type: String},
 }, {
     timestamps: false
 })

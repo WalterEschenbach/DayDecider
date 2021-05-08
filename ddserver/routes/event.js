@@ -45,7 +45,7 @@ router.route('/update').post((req,res)=>{
     const endDate = req.body.endDate.endDate
     const eventFocus = req.body.eventFocus
 
-    Date.findOneAndUpdate({email : email}, {email, startDate, endDate, eventFocus}, {new: true, upsert: true}, (error, result)=>{
+    Date.findOneAndUpdate({email: email, eventFocus: eventFocus}, {email, startDate, endDate, eventFocus}, {new: true, upsert: true}, (error, result)=>{
         if(result){
             console.log('result:', result)
             res.send(result).end();

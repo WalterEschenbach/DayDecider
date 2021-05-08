@@ -8,7 +8,7 @@ export default function CalendarContainer(props) {
 
     return (
         <div className="cContainer">
-                <CalendarDetail eventFocus={props.eventFocus}/>
+                <CalendarDetail eventFocus={props.eventFocus} data={props.data}/>
                 <CalendarDisplayComponent />
                 <Account />
                 <div className="cTitle"><h2>DAYDECIDER</h2></div>
