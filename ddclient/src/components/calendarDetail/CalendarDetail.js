@@ -17,13 +17,13 @@ function CalendarDetail(props) {
         setEventFocus(props.eventFocus)
     }, [props.eventFocus])
 
-    useEffect(()=>{
-        const eventDates = props.data.find(event=>event.eventName === eventFocus)
+    useEffect(() => {
+        const eventDates = props.data.find(event => event.eventName === eventFocus)
         setStartDate(eventDates?.startDate[0][0]?.startDate)
         setEndDate(eventDates?.startDate[0][0]?.endDate)
-    },[eventFocus, props.data])
+    }, [eventFocus, props.data])
 
-    function handleSave(){
+    function handleSave() {
         const route = `${Settings.domain.server}/event/update`
         const body = {
             startDate,
@@ -31,45 +31,45 @@ function CalendarDetail(props) {
             eventFocus
         }
 
-        const transport = axios.create({withCredentials: true})
+        const transport = axios.create({ withCredentials: true })
         transport.post(route, body)
-        .then(res=> {
-            console.log('response:', res)
-            setStartDate(res.data.startDate)
-            setEndDate(res.data.endDate)
-        })
-        .catch(err => console.log('err:', err))
+            .then(res => {
+                console.log('response:', res)
+                setStartDate(res.data.startDate)
+                setEndDate(res.data.endDate)
+            })
+            .catch(err => console.log('err:', err))
         setShow(false)
     }
 
     const styles = {
-        position: "absolute", 
-        width: "fit-content", 
-        height: "20rem", 
-        zIndex: "2", 
-        right:"25px", 
+        position: "absolute",
+        width: "fit-content",
+        height: "fit-content",
+        zIndex: "2",
+        right: "25px",
         bottom: "25px"
     }
 
     return (
         <Draggable >
-        <div style={styles} >
-        <div className="cdContainer">
-            <h1>{eventFocus}</h1>
-            <CalendarModal 
-            setStartDate={setStartDate}
-            setEndDate={setEndDate}
-            startDate={startDate}
-            endDate={endDate}
-            handleSave={handleSave}
-            show={show}
-            setShow={setShow}
-            />
-            <br/>
-            <h3>{`Start Date: ${startDate?moment(startDate).format('MMMM Do YYYY'):""}`}</h3>
-            <h3>{`End Date: ${endDate?moment(endDate).format('MMMM Do YYYY'):""}`}</h3>
-        </div>
-        </div>
+            <div style={styles} >
+                <div className="cdContainer">
+                    <h1>{eventFocus}</h1>
+                    <CalendarModal
+                        setStartDate={setStartDate}
+                        setEndDate={setEndDate}
+                        startDate={startDate}
+                        endDate={endDate}
+                        handleSave={handleSave}
+                        show={show}
+                        setShow={setShow}
+                    />
+                    <br />
+                    <h3>{`Start Date: ${startDate ? moment(startDate).format('MMMM Do YYYY') : ""}`}</h3>
+                    <h3>{`End Date: ${endDate ? moment(endDate).format('MMMM Do YYYY') : ""}`}</h3>
+                </div>
+            </div>
         </Draggable>
     )
 }
