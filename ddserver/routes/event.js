@@ -14,7 +14,15 @@ router.route('/create').post((req, res)=>{
     console.log('newEvent',newEvent)
     
     newEvent.save()
-        .then(()=> console.log("Event Created!"))
+        .then((event)=> {
+            console.log("Event Created!", event)
+            for(i=0; i<event.group.length; i++){
+                User.findOneAndUpdate({email: event.group[i]}, {$push: {events: event._id}})
+                .then((user)=>console.log("user updated!",user))
+                .catch((err)=> console.log("user err:",err))
+            }
+            
+        })
         .catch(err => console.log('DB Error: ' + err))
 
     res.status(200).end()

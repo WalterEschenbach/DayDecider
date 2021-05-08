@@ -14,6 +14,7 @@ export default function CreateEvent(props) {
     const [invalidEmail, setInvalidEmail] = useState(false)
     const [invalidName, setInvalidName] = useState(false)
     const [eventCreated, setEventCreated] = useState(false)
+   
     
     const handleNameChange = (e) =>{
         setName(e.target.value)
@@ -57,13 +58,16 @@ export default function CreateEvent(props) {
 
             transport.post(route,event)
             .then(res => console.log('Response:', res))
+            .then(()=>{
+                setEmails([])
+                setEmail('')
+                setName("")
+                setEventCreated(true)
+                setInvalidName(false)
+            })
             .catch(err => console.log(err))
             
-            setEmails([])
-            setEmail('')
-            setName("")
-            setEventCreated(true)
-            setInvalidName(false)
+       
         }else{
             setInvalidName(true)
             console.log('invalidName',invalidName)

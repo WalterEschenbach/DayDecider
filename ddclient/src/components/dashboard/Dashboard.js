@@ -18,6 +18,7 @@ export default function Dashboard() {
         transport.get(tURL)
         .then((res)=> {
             setData(res.data)
+            console.log(res.data)
         })
     },[])
 

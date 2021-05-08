@@ -10,6 +10,7 @@ function CalendarDetail(props) {
     const [eventFocus, setEventFocus] = useState(props.eventFocus);
     const [startDate, setStartDate] = useState(null)
     const [endDate, setEndDate] = useState(null)
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         setEventFocus(props.eventFocus)
@@ -27,6 +28,7 @@ function CalendarDetail(props) {
         transport.post(route, body)
         .then(res=> console.log('response:', res))
         .catch(err => console.log('err:', err))
+        setShow(false)
     }
 
     return (
@@ -40,6 +42,8 @@ function CalendarDetail(props) {
             startDate={startDate}
             endDate={endDate}
             handleSave={handleSave}
+            show={show}
+            setShow={setShow}
             />
         </div>
         </div>

@@ -4,10 +4,8 @@ import CalendarSelectComponent from '../calendarSelectComponent/CalendarSelectCo
 import './calendarmodal.css'
 
 export default function CalendarModal(props) {
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => props.setShow(false);
+    const handleShow = () => props.setShow(true);
 
     return (
         <div className="calendar-modal">
@@ -15,7 +13,7 @@ export default function CalendarModal(props) {
                 Select Dates
             </Button>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={props.show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Select Dates</Modal.Title>
                 </Modal.Header>
