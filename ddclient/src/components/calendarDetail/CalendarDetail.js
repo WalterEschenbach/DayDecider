@@ -19,8 +19,8 @@ function CalendarDetail(props) {
 
     useEffect(() => {
         const eventDates = props.data.find(event => event.eventName === eventFocus)
-        setStartDate(eventDates?.startDate[0][0]?.startDate)
-        setEndDate(eventDates?.startDate[0][0]?.endDate)
+        setStartDate(eventDates?.selectedDates[0][0]?.startDate)
+        setEndDate(eventDates?.selectedDates[0][0]?.endDate)
     }, [eventFocus, props.data])
 
     function handleSave() {

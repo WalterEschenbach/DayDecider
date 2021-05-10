@@ -40,7 +40,6 @@
 .day {
 	display: flex;
 	justify-content: flex-start;
-	align-items: center;
 	width: calc(100% / 7);
 	height: 6rem;
 }
