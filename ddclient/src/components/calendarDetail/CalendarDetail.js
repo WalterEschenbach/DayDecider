@@ -21,7 +21,7 @@ function CalendarDetail(props) {
         const eventDates = props.data.find(event => event.eventName === eventFocus)
         setStartDate(eventDates?.selectedDates[0][0]?.startDate)
         setEndDate(eventDates?.selectedDates[0][0]?.endDate)
-    }, [eventFocus, props.data])
+    }, [eventFocus, props.data, show])
 
     function handleSave() {
         const route = `${Settings.domain.server}/event/update`

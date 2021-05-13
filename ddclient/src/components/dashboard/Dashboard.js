@@ -18,7 +18,6 @@ export default function Dashboard() {
         transport.get(tURL)
         .then((res)=> {
             setData(res.data)
-            console.log(res.data)
         })
     },[])
 
@@ -30,7 +29,7 @@ export default function Dashboard() {
         try{
             setGroup(data.find(event=>event.eventName ===eventFocus).members)
         } catch{
-            console.log('Group Undefined at Dashboard')
+            console.error("error")
         }
     }, [eventFocus, group, data])
 

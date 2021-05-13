@@ -6,6 +6,7 @@ const datesSchema = new Schema({
     startDate: {type: String},
     endDate: {type: String},
     eventFocus: {type: String},
+    duration: {type: Number}
 }, {
     timestamps: false
 })

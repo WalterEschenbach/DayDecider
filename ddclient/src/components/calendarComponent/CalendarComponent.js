@@ -13,8 +13,8 @@ function CalendarComponent(props) {
     const [year, setYear] = useState(new Date().getFullYear())
     const [firstDayOfMonth, setFirstDayOfMonth] = useState(new Date(year, month, 1).getDay())
     const [lastDayOfMonth, setLastDayOfMonth] = useState(new Date(year, month + 1, 0).getDay())
-    const [lastDateOfMonth, setLastDateOfMonth] = useState(new Date(year, month + 1, 0).getDate())
-    const [previousDate, setPreviousDate] = useState(new Date(year, month, 0).getDate())
+    const [lastDateOfCurrentMonth, setLastDateOfMonth] = useState(new Date(year, month + 1, 0).getDate())
+    const [lastDateOfPreviousMonth, setLastDateOfPreviousMonth] = useState(new Date(year, month, 0).getDate())
 
     useEffect(() => {
         if (month < 0) { setMonth(11) }
@@ -22,13 +22,11 @@ function CalendarComponent(props) {
         setFirstDayOfMonth(new Date(year, month, 1).getDay())
         setLastDayOfMonth(new Date(year, month + 1, 0).getDay())
         setLastDateOfMonth(new Date(year, month + 1, 0).getDate())
-        setPreviousDate(new Date(year, month, 0).getDate())
+        setLastDateOfPreviousMonth(new Date(year, month, 0).getDate())
 
-    }, [month, year])
+    }, [month, year, props.eventFocus])
 
-    console.log("Calendar Data:", props.data)
-
-    const days = renderDays(year, month, firstDayOfMonth, lastDayOfMonth, lastDateOfMonth, previousDate, props.eventFocus, props.data);
+    const days = renderDays(year, month, firstDayOfMonth, lastDayOfMonth, lastDateOfCurrentMonth, lastDateOfPreviousMonth, props.eventFocus, props.data, props.color);
 
     function previousMonth() {
         if (month === 0) {

@@ -5,7 +5,7 @@ import './calendardisplaycomponent.css'
 function CalendarDisplayComponent(props) {
     return (
         <div className="ccContainer">
-            <CalendarComponent eventFocus={props.eventFocus} data={props.data} />
+            <CalendarComponent eventFocus={props.eventFocus} data={props.data} color={props.color} />
         </div>
     )
 }
