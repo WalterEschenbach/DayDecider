@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react'
 import {Route, Redirect} from 'react-router-dom'
 import UserProvider from '../UserProvider'
+import {Spinner} from 'react-bootstrap'
 
 export default function PrivateRoute({comp: Component, ...rest }) {
     const [authStatus, setAuthStatus] = useState(null)
@@ -17,7 +18,7 @@ export default function PrivateRoute({comp: Component, ...rest }) {
         <Route {...rest} render={(props) => {
             switch(authStatus){
                 case null:{
-                    return <></>
+                    return <div style={{display: 'flex', justifyContent:'center', alignItems: "center", width: "100%", height: "100vh"}}><Spinner animation="border" variant="secondary" style={{width:"5em", height: "5em"}}/></div>
                 }
                 case true: {
                     return <Component {...props}/>;
@@ -31,7 +32,7 @@ export default function PrivateRoute({comp: Component, ...rest }) {
                     }}/>
                 }
                 default: {
-                    return <></>
+                    return <div style={{display: 'flex', justifyContent:'center', alignItems: "center", width: "100%", height: "100vh"}}><Spinner animation="border" variant="secondary" style={{width:"5em", height: "5em"}}/></div>
                 }
             }
         }}
