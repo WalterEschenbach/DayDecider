@@ -26,7 +26,7 @@ router.get('/google', passport.authenticate('google',{
 
 // callback route for google to redirect to
 router.get('/google/redirect', passport.authenticate('google', {failureRedirect: '/Login'}), (req, res)=>{
-    res.redirect(`${keys.domain.client}/?email=${req.user.email}&picture=${req.user.picture}`)
+    res.redirect(`${keys.domain.client}/`)
 })
 
 module.exports = router;

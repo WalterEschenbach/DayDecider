@@ -6,7 +6,7 @@ import Login from './components/auth/login/Login'
 import NOTFOUND from './components/404'
 import PrivateRoute from './components/auth/privateRoute/PrivateRoute'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import checkAuth from './utils/checkAuth'
+import UserProvider from './components/auth/UserProvider'
 import './App.css';
 
 function App() {
@@ -15,15 +15,16 @@ function App() {
     <div className="App">
       <div className="appContainer">
         <Router>
-          <Switch>
-            
-            <PrivateRoute exact path="/" comp={Dashboard}/>
-            <PrivateRoute path="/signup" comp={SignUp}/>
-            <PrivateRoute path="/logout" comp={Logout}/>
-            <PrivateRoute path="/event/create" comp={CreateEvent}/>
-            <Route path="/login" component={Login}/>
-            <Route path="*" component={NOTFOUND}/>
-          </Switch>
+          <UserProvider>
+            <Switch>
+              <PrivateRoute exact path="/" comp={Dashboard}/>
+              <PrivateRoute path="/signup" comp={SignUp}/>
+              <PrivateRoute path="/logout" comp={Logout}/>
+              <PrivateRoute path="/event/create" comp={CreateEvent}/>
+              <Route path="/login" component={Login}/>
+              <Route path="*" component={NOTFOUND}/>
+            </Switch>
+          </UserProvider>
         </Router>
       </div>
     </div>
