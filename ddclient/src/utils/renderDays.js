@@ -18,17 +18,17 @@ function renderDays(year, month, firstDayOfMonth, lastDayOfMonth, lastDateOfCurr
 
     //render days prior to the first of the month
     for (let i = firstDayOfMonth - 1; i >= 0; i--) {
-        days.push({date: lastDateOfPreviousMonth - i, fullDate:moment(`${month}-${lastDateOfPreviousMonth - i}-${year}`).format("MMMM Do YYYY"), pcf: "p", bars:[]})
+        days.push({date: lastDateOfPreviousMonth - i, fullDate:moment(`${month}-${lastDateOfPreviousMonth - i}-${year}`, "MM-DD-YYYY").format("MMMM Do YYYY"), pcf: "p", bars:[]})
     }
 
     //render days for the current month
     for (let i = 1; i < lastDateOfCurrentMonth + 1; i++) {
-            days.push({date: i, fullDate:moment(`${month+1}-${i}-${year}`).format("MMMM Do YYYY"), pcf: "c", bars: []})
+            days.push({date: i, fullDate:moment(`${month+1}-${i}-${year}`, "MM-DD-YYYY").format("MMMM Do YYYY"), pcf: "c", bars: []})
     }
 
     //render days for next month
     for (let i = 6 - lastDayOfMonth; i > 0; i--) {
-        fDays.unshift({date: i, fullDate:moment(`${month+2}-${i}-${year}`).format("MMMM Do YYYY"), pcf: "f", bars:[]})
+        fDays.unshift({date: i, fullDate:moment(`${month+2}-${i}-${year}`, "MM-DD-YYYY").format("MMMM Do YYYY"), pcf: "f", bars:[]})
         if (i === 1) { fDays.forEach(day=> days.push(day)) }
     }
 
@@ -37,10 +37,9 @@ function renderDays(year, month, firstDayOfMonth, lastDayOfMonth, lastDateOfCurr
     
 
     if(days[0]) {
-        let c = 0;
         selectedDates.forEach(member=>{
             for(let i = 0; i<days.length; i++){
-                if(moment(member.startDate).format("MMMM Do YYYY") === days[i].fullDate) {
+                if(moment(member.startDate, "YYYY-MM-DD").format("MMMM Do YYYY") === days[i].fullDate) {
                     for(let j = member.duration; j>0;j--){
                         days[i].bars.push(member.color)
                         i++
@@ -52,9 +51,8 @@ function renderDays(year, month, firstDayOfMonth, lastDayOfMonth, lastDateOfCurr
         days.forEach(day=> {
             if(day.bars[0]){
                 let bars = []
-                day.bars.forEach(b=> {
-                    bars.push(<Bar color={b}/>)
-                    c++
+                day.bars.forEach((b, index)=> {
+                    bars.push(<Bar color={b} key={index}/>)
                 })
                 rDays.push(
                     <div className={`day ${day.pcf}`} key={`${day.date}${day.pcf}`}>
@@ -64,7 +62,6 @@ function renderDays(year, month, firstDayOfMonth, lastDayOfMonth, lastDateOfCurr
             }else{
                 rDays.push(<div className={`day ${day.pcf}`} key={`${day.date}${day.pcf}`}>{day.date}</div>)
             }
-            c = 0;
         })
     }
 

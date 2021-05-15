@@ -1,20 +1,17 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import {Route, Redirect} from 'react-router-dom'
-import checkAuth from '../../../utils/checkAuth'
-
-
+import UserProvider from '../UserProvider'
 
 export default function PrivateRoute({comp: Component, ...rest }) {
     const [authStatus, setAuthStatus] = useState(null)
-   
-    checkAuth()
-    .then(result => {
-        setAuthStatus(result)
-    })
-  
+
+    const data = useContext(UserProvider.context)
+
+    
     useEffect(()=>{
-        console.log("AuthStatus:", authStatus)
-    },[authStatus])
+        if(data?.data) setAuthStatus(true)
+        else if(data===false) setAuthStatus(false)
+    },[data])
 
     return (
         <Route {...rest} render={(props) => {
@@ -32,6 +29,9 @@ export default function PrivateRoute({comp: Component, ...rest }) {
                             from: props.location
                         }
                     }}/>
+                }
+                default: {
+                    return <></>
                 }
             }
         }}

@@ -29,7 +29,7 @@ export default function Dashboard() {
         try{
             setGroup(data.find(event=>event.eventName ===eventFocus).members)
         } catch{
-            console.error("error")
+            console.log("Select an Event! ...")
         }
     }, [eventFocus, group, data])
 

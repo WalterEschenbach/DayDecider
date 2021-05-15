@@ -13,10 +13,12 @@ const UserProvider = ({children}) => {
 
         transport.get(tLink)
         .then(res=>{
-            console.log(res)
             setUser(res)
         })
-        .catch(err=>console.log(err))
+        .catch(err=>{
+            setUser(false)
+            console.log(err)
+        })
     }, [])
 
     return (
