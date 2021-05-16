@@ -9,6 +9,7 @@ const keys = require('./config/keys')
 const cookieSession = require('cookie-session')
 const connectionURL = keys.mongodb
 const authCheck = require('./utils/auth-check')
+const path = 'path'
 
 const corsOptions = {
   origin: [keys.domain.client , keys.domain.server],
@@ -55,5 +56,14 @@ app.use('/auth', authRouter);
 app.use('/event',authCheck, eventRouter);
 app.use('/user',authCheck, userRouter);
 
+// Serve static assets if in production
+
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res)=> {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
 
 app.listen(PORT)
