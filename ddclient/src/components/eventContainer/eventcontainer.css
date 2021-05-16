@@ -24,6 +24,11 @@
 	padding-left: 0;
 	padding-right: 0;
 	border-radius: 10px;
+	background-color: #17252a;
+	color: #feffff;
+	border-radius: 10px;
+	margin: 2px 0px;
+	cursor: pointer;
 }
 .media-active {
 	background-color: #5a7e7c;
@@ -37,4 +42,17 @@
 }
 .media-active h4 {
 	color: #feffff;
+}
+
+@media only screen and (max-width: 600px) {
+	.aToggle {
+		border-radius: 0px;
+		margin: 0px 0px;
+	}
+	.media-active {
+		border-radius: 0px;
+	}
+	.eContainer {
+		border-radius: 0px;
+	}
 }

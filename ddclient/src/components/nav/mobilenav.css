@@ -1,0 +1,46 @@
+.mobile-container {
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	bottom: 0px;
+	width: 100%;
+	height: 8rem;
+	z-index: 3;
+}
+.detail-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(100% / 3);
+	height: 100%;
+	z-index: 3;
+	background-color: transparent;
+}
+.calendar-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(100% / 3);
+	height: 100%;
+	z-index: 3;
+	background-color: transparent;
+}
+
+.calendar-detail {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(100% / 3);
+	height: 100%;
+	background-color: transparent;
+}
+.active div {
+	border-radius: 100%;
+	background-color: blue;
+	padding: 2em;
+}
+.active .fa-icon {
+}
+
+.fa-icon {
+}

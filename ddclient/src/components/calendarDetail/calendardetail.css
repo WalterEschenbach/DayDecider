@@ -1,3 +1,11 @@
+.cdPosition {
+	position: absolute;
+	width: fit-content;
+	height: fit-content;
+	z-index: 2;
+	right: 25px;
+	bottom: 25px;
+}
 .cdContainer {
 	height: 100%;
 	width: 100%;
@@ -13,4 +21,25 @@
 }
 .cdContainer h3 {
 	color: #feffff;
+}
+
+@media only screen and (max-width: 600px) {
+	.cdPosition {
+		position: absolute;
+		height: 100vh;
+		width: 100%;
+		z-index: 0;
+		right: 0px;
+		bottom: 0px;
+	}
+	.cdContainer {
+		height: 100vh;
+		width: 100%;
+		color: #17252a;
+		background-color: transparent;
+		border-radius: 0px;
+		padding: 0px;
+		opacity: 100%;
+		z-index: 0;
+	}
 }

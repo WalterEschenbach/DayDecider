@@ -4,3 +4,21 @@
 	border: none;
 	background-color: transparent;
 }
+.card {
+	border: none;
+	border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+	.dContainer {
+		width: 100vw;
+		border-radius: 0px;
+	}
+	.dContainer Accordian {
+		border: 1px solid blue;
+	}
+	.card {
+		border: none;
+		border-radius: 0px;
+	}
+}

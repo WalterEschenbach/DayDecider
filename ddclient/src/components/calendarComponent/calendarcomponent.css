@@ -53,3 +53,18 @@
 .day.f {
 	opacity: 50%;
 }
+
+@media only screen and (max-width: 600px) {
+	.calendarContainer {
+		height: 100vh;
+		width: 100%;
+	}
+	.month {
+		display: flex;
+		justify-content: space-around;
+		padding-left: 30px;
+		padding-right: 30px;
+		padding-top: 0px;
+		padding-bottom: 30px;
+	}
+}

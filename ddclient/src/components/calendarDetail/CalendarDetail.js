@@ -42,18 +42,9 @@ function CalendarDetail(props) {
         setShow(false)
     }
 
-    const styles = {
-        position: "absolute",
-        width: "fit-content",
-        height: "fit-content",
-        zIndex: "2",
-        right: "25px",
-        bottom: "25px"
-    }
-
     return (
         <Draggable >
-            <div style={styles} >
+            <div className="cdPosition" >
                 <div className="cdContainer">
                     <h1>{eventFocus}</h1>
                     <CalendarModal

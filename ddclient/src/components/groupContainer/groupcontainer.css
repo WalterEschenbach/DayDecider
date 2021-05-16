@@ -6,7 +6,15 @@
 	background-color: #17252a;
 	border: none;
 	border-radius: 10px;
+	margin: 2px 0px;
 }
 .gContainer .title h2 {
 	color: #feffff;
+}
+
+@media only screen and (max-width: 600px) {
+	.gContainer {
+		border-radius: 0px;
+		margin: 0px;
+	}
 }

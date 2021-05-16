@@ -6,7 +6,7 @@ import './groupcontainer.css'
 export default function GroupContainer(props) {
     return (
         <React.Fragment>
-            <Accordion.Toggle as={Card.Header} eventKey="1" className="gContainer" style={{borderRadius: "10px", margin: "2px 0px"}}>
+            <Accordion.Toggle as={Card.Header} eventKey="1" className="gContainer" >
                 <header className="title">
                     <h2>GROUP</h2>
                 </header>
