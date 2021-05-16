@@ -6,7 +6,7 @@ import axios from 'axios'
 import Settings from '../../config/settings'
 import CalendarDetail from '../calendarDetail/CalendarDetail'
 import CalendarDisplayComponent from '../calendarDisplayComponent/CalendarDisplayComponent'
-
+import NotFound from '../404'
 import './dashboard.css'
 
 export default function Dashboard() {
@@ -55,6 +55,7 @@ export default function Dashboard() {
 
     const cComponent = <CalendarDisplayComponent eventFocus={eventFocus} data={data} />
     const cDetails = <CalendarDetail eventFocus={eventFocus} data={data} />
+    const NOTFOUND = <NotFound/>
 
 
     let mobileDisplay = <div>Hello World</div>;   
@@ -71,6 +72,9 @@ export default function Dashboard() {
         case 'calendar-detail':{
             mobileDisplay = cDetails;
             break;
+        }
+        default: {
+            mobileDisplay = NOTFOUND;
         }
     }
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {FaListUl, FaRegCalendarAlt, FaArrowRight} from 'react-icons/fa'
 import './mobilenav.css'
 
@@ -10,11 +10,6 @@ function MobileNav(props) {
         {i: <FaArrowRight size="3em" className="fa-icon" />, c: "calendar-detail"},
     ]
 
-
-   
-
-
-    
     return (
         <div className="mobile-container">
             {icons.map(icon=>{
