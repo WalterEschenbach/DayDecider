@@ -36,11 +36,13 @@
 }
 .active div {
 	border-radius: 100%;
-	background-color: blue;
+	background-color: #17252a;
 	padding: 2em;
 }
-.active .fa-icon {
+.circle {
+	color: #e0dfcc;
 }
 
-.fa-icon {
+button {
+	border: none;
 }

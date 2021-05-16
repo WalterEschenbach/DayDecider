@@ -5,3 +5,10 @@
 	color: #feffff;
 	border: 1px solid #feffff;
 }
+
+@media only screen and (max-width: 600px) {
+	.calendar-modal Button {
+		color: #17252a;
+		border: 1px solid #17252a;
+	}
+}
