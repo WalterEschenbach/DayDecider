@@ -71,7 +71,7 @@ if(process.env.NODE_ENV === 'production'){
   app.get('*', (req, res)=> {
     //res.sendFile(path.resolve(__dirname, 'ddclient', 'build', 'index.html'))
     let path = req.params['0'].substring(1)
-
+    console.log("path:", path)
     if (protected.includes(path)) {
       // Return the actual file
       res.sendFile(`${__dirname}/ddclient/build/${path}`);
