@@ -66,7 +66,7 @@ let protected = ['transformed.js', 'main.css', 'favicon.ico']
 //if(process.env.NODE_ENV === 'production'){
 
 
-  app.use(express.static('ddclient/build'));
+  //app.use(express.static('ddclient/build'));
 
   app.get('/*', (req, res) => {
     let url = path.join(__dirname, 'ddclient', 'build', 'index.html');
