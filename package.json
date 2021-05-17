@@ -10,7 +10,7 @@
     "client": "npm start --prefix ddclient",
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ddclient && npm run build --prefix ddclient"
+    "heroku-postbuild": "cd ddclient && npm install && npm run build"
   },
   "repository": {
     "type": "git",
