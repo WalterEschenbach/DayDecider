@@ -5,12 +5,12 @@ const app = express()
 const PORT = process.env.PORT || 3030;
 const mongoose = require('mongoose');
 const passport = require('passport')
-const passportSetup = require('./config/passport-setup')
-const keys = require('./config/keys')
+const passportSetup = require('./ddserver/config/passport-setup')
+const keys = require('./ddserver/config/keys')
 const cookieSession = require('cookie-session')
 const connectionURL = process.env.MONGODB_CONNECTION_STRING
-const authCheck = require('./utils/auth-check')
-const path = 'path'
+const authCheck = require('./ddserver/utils/auth-check')
+const path = require('path')
 
 
 const corsOptions = {
@@ -50,9 +50,9 @@ app.get('/', (req, res) => {
     res.send( {user: req.user})
 })
 
-const eventRouter = require('./routes/event')
-const authRouter = require('./routes/auth')
-const userRouter = require('./routes/user')
+const eventRouter = require('./ddserver/routes/event')
+const authRouter = require('./ddserver/routes/auth')
+const userRouter = require('./ddserver/routes/user')
 
 app.use('/auth', authRouter);
 app.use('/event',authCheck, eventRouter);
@@ -61,10 +61,10 @@ app.use('/user',authCheck, userRouter);
 // Serve static assets if in production
 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/build'));
+  app.use(express.static('ddclient/build'));
 
   app.get('*', (req, res)=> {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'ddclient', 'build', 'index.html'))
   })
 }
 

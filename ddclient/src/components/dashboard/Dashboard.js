@@ -24,7 +24,7 @@ export default function Dashboard() {
         transport.get(tURL)
         .then((res)=> {
             setData(res.data)
-        })
+        }).catch(error=>console.log('initial request error', error))
     },[])
 
     useEffect(()=>{

@@ -5,7 +5,7 @@ import './login.css'
 
 export default function Login() {
     const gLink = `${Settings.domain.server}/auth/google`
-    const tLink = `${Settings.domain.server}/auth/twitter`
+    //const tLink = `${Settings.domain.server}/auth/twitter`
 
     return (
         <div className="sContainer">
