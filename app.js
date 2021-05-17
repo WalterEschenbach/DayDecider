@@ -61,23 +61,22 @@ app.use('/user',authCheck, userRouter);
 // Serve static assets if in production
 
 // List of all the files that should be served as-is
-let protected = ['transformed.js', 'main.css', 'favicon.ico']
+//let protected = ['transformed.js', 'main.css', 'favicon.ico']
 
-//if(process.env.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('ddclient/build'));
 
+  const pathName = path.resolve(__dirname, 'ddclient', 'build', 'index.html')
 
-  //app.use(express.static('ddclient/build'));
-
-  app.get('/*', (req, res) => {
-    let url = path.join(__dirname, 'ddclient', 'build', 'index.html');
-    console.log('url', url)
-    if (!url.startsWith('/day-decider/')) // we're on local windows
-      url = url.substring(1);
-      console.log('url2',url)
-    res.sendFile(url);
+  app.get('*', (req, res) => {
+    res.sendFile(pathName);
   });
 
-//}
+  app.get('/', (req, res) => {
+    res.sendFile(pathName);
+  });
+
+}
 
 app.listen(PORT)
 
