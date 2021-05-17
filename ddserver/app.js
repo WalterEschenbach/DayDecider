@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const app = express()
@@ -7,12 +8,13 @@ const passport = require('passport')
 const passportSetup = require('./config/passport-setup')
 const keys = require('./config/keys')
 const cookieSession = require('cookie-session')
-const connectionURL = keys.mongodb
+const connectionURL = process.env.MONGODB_CONNECTION_STRING
 const authCheck = require('./utils/auth-check')
 const path = 'path'
 
+
 const corsOptions = {
-  origin: [keys.domain.client , keys.domain.server],
+  origin: [process.env.DOMAIN_CLIENT || keys.domain.client, process.env.DOMAIN_SERVER || keys.domain.server],
   credentials: true,
 }
 
@@ -30,7 +32,7 @@ mongoose.connect(connectionURL, {
 
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
-  keys: [keys.session.cookieKey]
+  keys: [process.env.SESSION_COOKIE_KEY || keys.session.cookieKey]
 }))
 
 // initialize passport

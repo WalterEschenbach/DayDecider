@@ -20,8 +20,8 @@ passport.use(
     new GoogleStrategy({
         // options for the google strategy
         callbackURL: '/auth/google/redirect',
-        clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret
+        clientID: process.env.GOOGLE_CLIENT_ID || keys.google.clientID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET || keys.google.clientSecret
     }, (accessToken, refreshToken, profile, done)=>{
         // passport callback function
         // check if user already exists in our database
@@ -59,8 +59,8 @@ passport.use(
 
 passport.use(new TwitterStrategy({
     authorizationURL: `https://api.twitte.com/1.1/account/verify_credentials.json?include_email="true"`,
-    consumerKey: keys.twitter.apiKey,
-    consumerSecret: keys.twitter.apiSecret,
+    consumerKey: process.env.TWITTER_API_KEY || keys.twitter.apiKey,
+    consumerSecret: process.env.TWITTER_API_SECRET || keys.twitter.apiSecret,
     callbackURL: "/auth/twitter/redirect"
   },
   function(token, tokenSecret, profile, done) {
