@@ -1,0 +1,36 @@
+{
+  "name": "day-decider",
+  "version": "1.0.0",
+  "description": "DayDecider is a tool that helps a group of people decide which days work best for future events.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./ddserver/app.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ddclient && npm run build --prefix ddclient"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WalterEschenbach/DayDecider.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.3",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-twitter": "^1.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "bugs": {
+    "url": "https://github.com/WalterEschenbach/DayDecider/issues"
+  },
+  "homepage": "https://github.com/WalterEschenbach/DayDecider#readme"
+}
