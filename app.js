@@ -63,24 +63,21 @@ app.use('/user',authCheck, userRouter);
 // List of all the files that should be served as-is
 let protected = ['transformed.js', 'main.css', 'favicon.ico']
 
-if(process.env.NODE_ENV === 'production'){
+//if(process.env.NODE_ENV === 'production'){
 
 
   app.use(express.static('ddclient/build'));
 
-  app.get('*', (req, res)=> {
-    //res.sendFile(path.resolve(__dirname, 'ddclient', 'build', 'index.html'))
-    let path = req.params['0'].substring(1)
-    console.log("path:", path)
-    if (protected.includes(path)) {
-      // Return the actual file
-      res.sendFile(`${__dirname}/ddclient/build/${path}`);
-    } else {
-      // Otherwise, redirect to /build/index.html
-      res.sendFile(`${__dirname}/ddclient/build/index.html`);
-    }
-  })
-}
+  app.get('/*', (req, res) => {
+    let url = path.join(__dirname, 'ddclient', 'build', 'index.html');
+    console.log('url', url)
+    if (!url.startsWith('/day-decider/')) // we're on local windows
+      url = url.substring(1);
+      console.log('url2',url)
+    res.sendFile(url);
+  });
+
+//}
 
 app.listen(PORT)
 
