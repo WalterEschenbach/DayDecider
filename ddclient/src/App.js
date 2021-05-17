@@ -17,7 +17,7 @@ function App() {
         <Router>
           <UserProvider>
             <Switch>
-              <Route exact path="/" comp={Dashboard}/>
+              <PrivateRoute exact path="/" comp={Dashboard}/>
               <PrivateRoute path="/signup" comp={SignUp}/>
               <PrivateRoute path="/logout" comp={Logout}/>
               <PrivateRoute path="/event/create" comp={CreateEvent}/>
