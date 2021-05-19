@@ -29,12 +29,5 @@ router.get('/google/redirect', passport.authenticate('google', {failureRedirect:
     res.redirect(`${keys.domain.client || process.env.DOMAIN_CLIENT}/`)
 })
 
-// auth with twitter
-router.get('/twitter', passport.authenticate('twitter'));
-
-// callback route for twitter to redirect to
-router.get('/twitter/redirect', passport.authenticate('twitter', {failureRedirect: '/Login'}), (req, res)=>{
-    res.redirect(`${keys.domain.client || process.env.DOMAIN_CLIENT }/`)
-})
 
 module.exports = router;

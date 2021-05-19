@@ -11,9 +11,5 @@ module.exports={
         client: "http://127.0.0.1:3000",
         server: "http://127.0.0.1:3030"
     },
-    twitter:{
-        apiKey: "jUu6vTbF1fZRoS0echW5Ofgtx",
-        apiSecret: "bmCTntrB7snCvWxlFVEhcBFBIfYwtqthk4oOOYjiiOVXKHMKJV",
-        bearerToken: "AAAAAAAAAAAAAAAAAAAAAKrWPgEAAAAAoTOCESMS3PHrHEcoqhnVODqrsnI%3DYgBKHOq75MUQMu1nOYId791rt0SBwTWlJSIn9XUn2BxOQQc7Bz"
-    }
+
 }

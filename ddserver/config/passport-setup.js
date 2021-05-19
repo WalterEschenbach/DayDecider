@@ -1,6 +1,5 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20')
-const TwitterStrategy = require('passport-twitter')
 const keys = require('./keys')
 let User = require('../models/user.model')
 
@@ -57,39 +56,3 @@ passport.use(
     })
 )
 
-passport.use(new TwitterStrategy({
-    authorizationURL: `https://api.twitte.com/1.1/account/verify_credentials.json?include_email="true"`,
-    consumerKey: process.env.TWITTER_API_KEY || keys.twitter.apiKey,
-    consumerSecret: process.env.TWITTER_API_SECRET || keys.twitter.apiSecret,
-    callbackURL: "/auth/twitter/redirect"
-  },
-  function(token, tokenSecret, profile, done) {
-      console.log("Twitter Profile:", profile)
-    User.findOne({ twitterId: profile.id }, function (err, currentUser) {
-        if(currentUser){
-            // already have the user
-            console.log('Welcome Back!:', currentUser)
-            //console.log('PROFILE:', profile)
-
-            done(null, currentUser)
-
-        }else{
-            // create user in our database
-            const name = profile.name;
-            const twitterId = profile.screen_name;
-            const email = "" //profile.emails[0]?.value
-            const events = [];
-            const picture = profile.photos[0].value
-        
-            const newUser = new User({name, twitterId, email, events, picture})
-    
-            newUser.save()
-            .then((newUser)=> {
-                console.log("User Created:", newUser)
-                done(null, newUser)
-            })
-            .catch(err => console.log('DB Error: ' + err))
-        }
-    });
-  }
-));
