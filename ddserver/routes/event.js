@@ -5,6 +5,7 @@ let Date = require('../models/date.model')
 const stages = require('../utils/dataAggregationPipeline')
 const moment = require('moment');
 
+// Create a New Event
 router.route('/create').post((req, res)=>{
     console.log('req.user', req.user)
     const name = req.body.name;
@@ -29,6 +30,7 @@ router.route('/create').post((req, res)=>{
     res.status(200).end()
 });
 
+// Find All Events for Current User
 router.route('/find').get((req,res)=>{
     User.aggregate(stages, (err, event)=>{
         if(err){
@@ -41,7 +43,7 @@ router.route('/find').get((req,res)=>{
 })
 
 
-
+// Update Dates Selected for Current User
 router.route('/update').post((req,res)=>{
     const email = req.user.email;
     const startDate = req.body.startDate.startDate
