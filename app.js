@@ -14,7 +14,7 @@ const path = require('path')
 
 
 const corsOptions = {
-  origin: [process.env.DOMAIN_CLIENT || keys.domain.client, process.env.DOMAIN_SERVER || keys.domain.server],
+  origin: [keys.domain.client || process.env.DOMAIN_CLIENT, keys.domain.server || process.env.DOMAIN_SERVER],
   credentials: true,
 }
 
@@ -32,7 +32,7 @@ mongoose.connect(connectionURL, {
 
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
-  keys: [process.env.SESSION_COOKIE_KEY || keys.session.cookieKey]
+  keys: [keys.session.cookieKey || process.env.SESSION_COOKIE_KEY]
 }))
 
 // initialize passport
