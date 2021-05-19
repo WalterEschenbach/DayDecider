@@ -1,6 +1,6 @@
 const Settings = {
     domain: {
-        client: "http://127.0.0.1:3000",
+        client: "https://fierce-spire-73209.herokuapp.com/",
         server: "http://127.0.0.1:3030"
     }
     
