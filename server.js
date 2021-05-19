@@ -79,13 +79,15 @@ if(process.env.NODE_ENV === 'production'){
 
   app.use(express.static(pathName));
 
+  app.get('/', (req, res) => {
+    res.sendFile(pathName);
+  });
+
   app.get('*', (req, res) => {
     res.sendFile(pathName);
   });
 
-  app.get('/', (req, res) => {
-    res.sendFile(pathName);
-  });
+ 
 
 }
 
