@@ -1,26 +1,25 @@
-require('dotenv').config()
 const express = require('express')
-const cors = require('cors')
 const app = express()
 const PORT = process.env.PORT || 3030;
-const mongoose = require('mongoose');
-const passport = require('passport')
-const passportSetup = require('./ddserver/config/passport-setup')
-const keys = require('./ddserver/config/keys')
-const cookieSession = require('cookie-session')
-const connectionURL = process.env.MONGODB_CONNECTION_STRING
-const authCheck = require('./ddserver/utils/auth-check')
 const path = require('path')
+const keys = require('./ddserver/config/keys')
 
+app.use(express.json())
 
+require('dotenv').config()
+
+// CORS Setup
 const corsOptions = {
   origin: [keys.domain.client || process.env.DOMAIN_CLIENT, keys.domain.server || process.env.DOMAIN_SERVER],
   credentials: true,
 }
-
-app.use(express.json())
-
+const cors = require('cors')
 app.use(cors(corsOptions))
+
+
+// Connect to MongoDB
+const mongoose = require('mongoose');
+const connectionURL = process.env.MONGODB_CONNECTION_STRING
 
 mongoose.connect(connectionURL, {
   useNewUrlParser: true,
@@ -30,15 +29,36 @@ mongoose.connect(connectionURL, {
 .then(()=> console.log('connected to DB'))
 .catch(error => console.log(error))
 
+
+// Cookie Session Setup
+const cookieSession = require('cookie-session')
+
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [keys.session.cookieKey || process.env.SESSION_COOKIE_KEY]
 }))
 
-// initialize passport
+// Initialize Passport
+const passport = require('passport')
+require('./ddserver/config/passport-setup')
+
 app.use(passport.initialize())
 app.use(passport.session())
 
+
+// Import routes
+const authCheck = require('./ddserver/utils/auth-check')
+
+const eventRouter = require('./ddserver/routes/event')
+const authRouter = require('./ddserver/routes/auth')
+const userRouter = require('./ddserver/routes/user')
+
+app.use('/auth', authRouter);
+app.use('/event',authCheck, eventRouter);
+app.use('/user',authCheck, userRouter);
+
+
+// Send User to Client
 app.use(function(req,res,next){
   res.locals.currentUser = req.user;
   next();
@@ -50,18 +70,9 @@ app.get('/', (req, res) => {
     res.send( {user: req.user})
 })
 
-const eventRouter = require('./ddserver/routes/event')
-const authRouter = require('./ddserver/routes/auth')
-const userRouter = require('./ddserver/routes/user')
 
-app.use('/auth', authRouter);
-app.use('/event',authCheck, eventRouter);
-app.use('/user',authCheck, userRouter);
 
 // Serve static assets if in production
-
-// List of all the files that should be served as-is
-//let protected = ['transformed.js', 'main.css', 'favicon.ico']
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('ddclient/build'));
@@ -77,6 +88,11 @@ if(process.env.NODE_ENV === 'production'){
   });
 
 }
+
+
+
+
+
 
 app.listen(PORT)
 
