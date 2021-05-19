@@ -2,14 +2,14 @@
   "name": "day-decider",
   "version": "1.0.0",
   "description": "DayDecider is a tool that helps a group of people decide which days work best for future events.",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client-install": "npm install --prefix ddclient",
-    "server": "nodemon app.js",
+    "server": "nodemon server.js",
     "client": "npm start --prefix ddclient",
-    "dev": "nodemon app.js",
-    "start": "node app.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "heroku-postbuild": "cd ddclient && npm install && npm run build"
   },
   "repository": {
